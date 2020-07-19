@@ -35,9 +35,7 @@ class MainPage extends StatelessWidget {
         child: StreamBuilder(
           stream: API.getTemps(),
           builder: (context, snapshot) {
-            print(snapshot.connectionState);
-            print(snapshot.data);
-            if (!snapshot.hasError) {
+            if (!snapshot.hasError && snapshot.data != null) {
               List<Widget> list = [];
               for (var sensor in snapshot.data) {
                 list.add(
