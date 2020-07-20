@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'package:charts_flutter/flutter.dart' as charts;
 
 import 'package:flutter/material.dart';
@@ -27,10 +28,10 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: !Platform.isMacOS ? AppBar(
         title: Text("Temp Graphs"),
         centerTitle: true,
-      ),
+      ) : null,
       body: SafeArea(
         child: StreamBuilder(
           stream: API.getTemps(),
